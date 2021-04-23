@@ -54,6 +54,9 @@ client.on('message', async (channel, tags, message, self) => {
     case '!insta':
       client.say(channel, `Me siga no instagram https://www.instagram.com/otallyto/`);
       break;
+      case '!git':
+        client.say(channel, `Me siga no github https://github.com/otallyto`);
+        break;
     default:
       return;
   }
