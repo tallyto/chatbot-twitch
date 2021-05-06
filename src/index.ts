@@ -1,6 +1,7 @@
 import tmi from 'tmi.js'
 import dotenv from 'dotenv'
-import clima from './clima'
+import { red, blue, green, roxo, orange, pisca } from './led'
+
 dotenv.config()
 const { PASSWORD } = process.env
 const client = new tmi.Client({
@@ -27,11 +28,13 @@ client.on('message', async (channel, tags, message, self) => {
   const args = message.split(' ');
   const commands = args[0].toLocaleLowerCase()
   switch (commands) {
-    case '!clima':
-      if (args.length === 1) return
-      const city = args.slice(1).join(' ')
-      const { message } = await clima(city)
-      client.say(channel, message);
+    case '!pisca':
+      const num = Number(args[1])
+      if (num !== NaN) {
+        pisca(num)
+      }else{
+       client.say(channel, `@${tags.username}, parece que você digitou um argumento invalido`);        
+      }
       break;
     case '!hello':
       client.say(channel, `@${tags.username}, world!`);
@@ -54,9 +57,24 @@ client.on('message', async (channel, tags, message, self) => {
     case '!insta':
       client.say(channel, `Me siga no instagram https://www.instagram.com/otallyto/`);
       break;
-      case '!git':
-        client.say(channel, `Me siga no github https://github.com/otallyto`);
-        break;
+    case '!git':
+      client.say(channel, `Me siga no github https://github.com/otallyto`);
+      break;
+    case '!red':
+      red()
+      break;
+    case '!blue':
+      blue()
+      break;
+    case '!green':
+      green()
+      break;
+    case '!roxo':
+      roxo()
+      break;
+    case '!orange':
+      orange()
+      break;
     default:
       return;
   }
