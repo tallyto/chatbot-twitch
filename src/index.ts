@@ -1,6 +1,6 @@
 import tmi from 'tmi.js'
 import dotenv from 'dotenv'
-import { red, blue, green, roxo, orange, pisca } from './led'
+import { red, blue, green, roxo, orange, pisca, off } from './led'
 
 dotenv.config()
 const { PASSWORD } = process.env
@@ -75,6 +75,9 @@ client.on('message', async (channel, tags, message, self) => {
     case '!orange':
       orange()
       break;
+      case '!off':
+        off()
+        break;
     default:
       return;
   }
