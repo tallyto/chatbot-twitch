@@ -20,10 +20,8 @@ async function orange() {
 }
 
 async function pisca(tempo){
-  console.log(tempo)
   await light.setPattern('seven_color_strobe_flash', tempo, (erro)=> {
     if(erro) console.log(erro)
-    console.log('deu certo', tempo)
   })
 }
 
