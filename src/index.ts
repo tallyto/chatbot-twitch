@@ -32,8 +32,8 @@ client.on('message', async (channel, tags, message, self) => {
       const num = Number(args[1])
       if (num !== NaN) {
         pisca(num)
-      }else{
-       client.say(channel, `@${tags.username}, parece que você digitou um argumento invalido`);        
+      } else {
+        client.say(channel, `@${tags.username}, parece que você digitou um argumento invalido`);
       }
       break;
     case '!hello':
@@ -75,9 +75,13 @@ client.on('message', async (channel, tags, message, self) => {
     case '!orange':
       orange()
       break;
-      case '!off':
-        off()
-        break;
+    case '!off':
+      off()
+      break;
+    case '!led':
+      client.say(channel, `!red !blue !roxo !orange !green !off`);
+      break;
+
     default:
       return;
   }
